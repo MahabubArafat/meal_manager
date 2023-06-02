@@ -2,39 +2,31 @@
 <html>
   <head>
     <title>Barcode Scanner</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
   </head>
   <body>
-    <div id="interactive" class="viewport"></div>
+    <video id="preview"></video>
 
     <script>
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        Quagga.init(
-          {
-            inputStream: {
-              name: "Live",
-              type: "LiveStream",
-              target: document.querySelector("#interactive"),
-            },
-            decoder: {
-              readers: ["ean_reader"], // Specify barcode types to scan (EAN in this case)
-            },
-          },
-          function (err) {
-            if (err) {
-              console.error("Error initializing Quagga:", err);
-              return;
-            }
-            Quagga.start();
+      const videoElement = document.getElementById("preview");
+      const scanner = new Instascan.Scanner({ video: videoElement });
+
+      scanner.addListener("scan", function (content) {
+        console.log("Scanned barcode:", content);
+        // You can perform further actions with the scanned barcode here
+      });
+
+      Instascan.Camera.getCameras()
+        .then(function (cameras) {
+          if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+          } else {
+            console.error("No cameras found.");
           }
-        );
-        Quagga.onDetected(function (result) {
-          console.log("Barcode detected and decoded:", result.codeResult.code);
-          // You can perform further actions with the scanned barcode here
+        })
+        .catch(function (error) {
+          console.error("Error accessing cameras:", error);
         });
-      } else {
-        console.error("Media devices not supported.");
-      }
     </script>
   </body>
 </html>
