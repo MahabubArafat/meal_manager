@@ -4,17 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "server": "nodemon server"
   },
   "keywords": [],
-  "author": "",
+  "author": "MahabubArafat",
   "license": "ISC",
   "dependencies": {
     "config": "^3.3.9",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
     "instascan": "^1.0.0",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.3",
-    "quagga": "^0.6.16"
+    "quagga": "^0.6.16",
+    "webrtc-adapter": "^8.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

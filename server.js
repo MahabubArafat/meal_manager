@@ -1,11 +1,26 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const connectDB = require("./config/db");
 
-app.use(express.static("public"));
+connectDB();
 
+//* Initializing middleware
+app.use(express.json({ extended: false }));
+
+//* this maybe for viewing static pages
+// app.use(express.static("public"));
+
+//* start testing
+app.get("/", (req, res) => {
+  res.send("Meal Manager Server Started...");
+});
+
+//* Routes
 app.use("/api/student_profile", require("./routes/api/student_profile"));
 
-app.listen(port, "0.0.0.0", () => {
-  console.log(`Server running on http://localhost:${port}`);
+//* port
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
