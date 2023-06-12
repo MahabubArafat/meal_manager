@@ -17,10 +17,27 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { name, studentID, email, phoneNumber, roomNumber } = req.body;
+    const { name, studentID, email, phoneNumber, roomNumber, hallName } =
+      req.body;
     try {
       //check someone with same id exists
-      let user = await StudentProfile.findOne(studentID);
+      let user = await StudentProfile.findOne({ studentID });
+      if (user) {
+        return res.status(400).json({ msg: "User Exists" });
+      }
+      const pin = Math.floor(Math.random() * 8999 + 1000);
+      console.log(pin);
+      user = new StudentProfile({
+        name,
+        studentID,
+        email,
+        phoneNumber,
+        roomNumber,
+        hallName,
+        pin,
+      });
+      await user.save();
+      res.json(user);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");

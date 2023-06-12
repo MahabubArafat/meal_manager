@@ -29,6 +29,9 @@ const StudentSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  pin: {
+    type: String,
+  },
 });
 
 module.exports = Student = mongoose.model("student", StudentSchema);
