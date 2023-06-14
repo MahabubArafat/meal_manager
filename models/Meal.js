@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const MealIntakes = new mongoose.Schema({
   student: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     ref: "student", // studentprofile schema, student name die export kora
   },
   time: {
@@ -10,8 +10,8 @@ const MealIntakes = new mongoose.Schema({
     default: Date.now,
   },
   manager: {
-    type: String,
-    required: true,
+    type: mongoose.Schema.Types.ObjectID,
+    ref: "manager",
   },
 });
 
