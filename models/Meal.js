@@ -15,4 +15,4 @@ const MealIntakes = new mongoose.Schema({
   },
 });
 
-module.exports = MealIntakes = mongoose.model("meals", MealIntakes);
+module.exports = Meals = mongoose.model("meals", MealIntakes);
