@@ -1,5 +1,6 @@
 const express = require("express");
 
+const adminMiddleWare = require("../../middleware/adminMiddleware");
 const StudentProfile = require("../../models/StudentProfile");
 
 const router = express.Router();
@@ -8,7 +9,7 @@ const router = express.Router();
 // @description Admin Page Login
 // @access      Private
 //TODO protect this route with middleware jwt token, password, not pin
-router.get("/", async (req, res) => {
+router.get("/", adminMiddleWare, async (req, res) => {
   try {
     res.json({ msg: "welcome to admin page" });
   } catch (err) {
@@ -21,7 +22,7 @@ router.get("/", async (req, res) => {
 // @description get all the student profiles
 // @access      Private
 //TODO protect this route with middleware jwt token, password, not pin
-router.get("/all_profile", async (req, res) => {
+router.get("/all_profile", adminMiddleWare, async (req, res) => {
   try {
     const profiles = await StudentProfile.find();
     res.json(profiles);
