@@ -30,7 +30,6 @@ router.post(
         return res.status(400).json({ msg: "User Exists" });
       }
       const pin = Math.floor(Math.random() * 8999 + 1000);
-      console.log(pin);
       user = new StudentProfile({
         name,
         studentID,
