@@ -5,12 +5,12 @@ const StudentProfile = require("../../models/StudentProfile");
 
 const router = express.Router();
 
-// @route       GET api/student_profile
+// @route       GET api/student/register
 // @description Create a student Profile
 // @access      Private
 //TODO : secure this route by middleware pin verification
 router.post(
-  "/",
+  "/register",
   check("name", "Provide Your Full Name").not().isEmpty(),
   check("studentID", "Student ID is required").not().isEmpty(),
   check("email", "Provide your CUET mail").isEmail(),
