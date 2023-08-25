@@ -3,7 +3,6 @@ const { check, validationResult } = require("express-validator");
 
 const adminMiddleWare = require("../../middleware/adminMiddleware");
 const StudentProfile = require("../../models/StudentProfile");
-const AdminProfile = require("../../models/Admin");
 const Admin = require("../../models/Admin");
 
 const router = express.Router();
@@ -38,22 +37,6 @@ router.get("/all_profile", adminMiddleWare, async (req, res) => {
 // @route       POST api/admin/
 // @description Login as admin
 // @access      Private
-router.post(
-  "/",
-  [
-    check("email", "Please Enter Your Email").isEmail(),
-    chcek("password", "Please Enter Your Password").exists(),
-  ],
-  async (req, res) => {
-    try {
-      const admin = await Admin.find();
-      res.json(profiles);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server Error");
-    }
-  }
-);
 
 // @route       POST api/admin/register
 // @description Register as admin
