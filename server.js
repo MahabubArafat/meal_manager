@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
 
 //* Routes
 app.use("/api/student", require("./routes/api/student"));
+app.use("/api/login", require("./routes/api/studentLogin"));
 app.use("/api/scanner", require("./routes/api/scanner"));
 app.use("/api/admin", require("./routes/api/admin"));
 //* port
