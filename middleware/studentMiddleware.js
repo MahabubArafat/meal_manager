@@ -2,12 +2,12 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 
 module.exports = function (req, res, next) {
-  const token = req.header("auth-token");
+  const token = req.header("student-auth-token");
   if (!token) {
     return res.status(401).json({ msg: "No Token, Not authorized" });
   }
   try {
-    const decoded = jwt.verify(token, config.get("jwtAdminSecretToken"));
+    const decoded = jwt.verify(token, config.get("jwtSecretToken"));
     req.user = decoded.user;
     next();
   } catch (err) {
