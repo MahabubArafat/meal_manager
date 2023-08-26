@@ -5,9 +5,9 @@ const ManagerScehema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  id: {
+  studentID: {
     type: String,
-    unique: true,
+    ref: "student",
   },
   start: {
     type: Date,
