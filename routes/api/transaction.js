@@ -33,7 +33,7 @@ router.post("/newtransaction", studentMiddleware, async (req, res) => {
   try {
     const user = await StudentProfile.findById(req.user.id).select("-pin");
 
-    const currentManager = await Manager.findOne().sort({ end: -1 }).exec();
+    const currentManager = await Manager.findOne().sort({ time: -1 }).exec();
 
     if (!currentManager) {
       return res.status(404).json({ errors: [{ msg: "There is no manager" }] });
