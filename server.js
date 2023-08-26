@@ -21,6 +21,7 @@ app.use("/api/login", require("./routes/api/studentLogin"));
 app.use("/api/scanner", require("./routes/api/scanner"));
 app.use("/api/admin", require("./routes/api/admin"));
 app.use("/api/manager", require("./routes/api/manager"));
+app.use("/api/transaction", require("./routes/api/transaction"));
 //* port
 const PORT = process.env.PORT || 3000;
 

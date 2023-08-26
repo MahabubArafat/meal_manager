@@ -6,7 +6,7 @@ const ManagerScehema = new mongoose.Schema({
     required: true,
   },
   studentID: {
-    type: String,
+    type: Number,
     ref: "student",
   },
   start: {

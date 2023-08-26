@@ -6,12 +6,26 @@ const Manager = require("../../models/Manager");
 const router = express.Router();
 
 // @route       GET api/manager
-// @description page for manager
+// @description page for who is the current manager
 // @access      Public
-//TODO : add adminmiddleware here so that only admins can add a manager
-router.get("/", (req, res) => {
+//TODO add manager phone number from studentprofile schema
+router.get("/", async (req, res) => {
   try {
-    res.send("manager route");
+    const currentManagers = await Manager.find()
+      .sort({ end: -1 })
+      .limit(2)
+      .exec();
+
+    //! if most recent or last manager is needed
+    // const mostRecentManager = await Manager.findOne()
+    // .sort({ end: -1 })  // Sort by 'end' field in descending order (most recent first)
+    // .exec();
+
+    if (!currentManagers.length) {
+      return res.status(404).json({ errors: [{ msg: "No Managers Added" }] });
+    }
+
+    res.json(currentManagers);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("server error");

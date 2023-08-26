@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.2.3",
     "quagga": "^0.6.16",
+    "uuid": "^9.0.0",
     "webrtc-adapter": "^8.2.2"
   },
   "devDependencies": {
