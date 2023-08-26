@@ -32,6 +32,9 @@ router.get("/", studentMiddleware, async (req, res) => {
 router.post("/newtransaction", studentMiddleware, async (req, res) => {
   try {
     const user = await StudentProfile.findById(req.user.id).select("-pin");
+    if (!user) {
+      return res.status(400).json({ errors: [{ msg: "No User found" }] });
+    }
 
     const currentManager = await Manager.findOne().sort({ time: -1 }).exec();
 
