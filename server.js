@@ -22,6 +22,7 @@ app.use("/api/scanner", require("./routes/api/scanner"));
 app.use("/api/admin", require("./routes/api/admin"));
 app.use("/api/manager", require("./routes/api/manager"));
 app.use("/api/transaction", require("./routes/api/transaction"));
+app.use("/api/meal", require("./routes/api/meal"));
 //* port
 const PORT = process.env.PORT || 3000;
 

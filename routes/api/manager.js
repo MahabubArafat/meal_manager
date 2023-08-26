@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const currentManagers = await Manager.find()
-      .sort({ end: -1 })
+      .sort({ time: -1 })
       .limit(2)
       .exec();
 
