@@ -24,7 +24,7 @@ app.use("/api/manager", require("./routes/api/manager"));
 app.use("/api/transaction", require("./routes/api/transaction"));
 app.use("/api/meal", require("./routes/api/meal"));
 //* port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on http://localhost:${PORT}`);
