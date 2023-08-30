@@ -55,7 +55,7 @@ const Register = () => {
         </div>
         <div className="form-group">
           <input
-            type="number"
+            type="text"
             placeholder="Student ID"
             name="studentID"
             value={studentID}
@@ -75,7 +75,7 @@ const Register = () => {
         </div>
         <div className="form-group">
           <input
-            type="number"
+            type="text"
             placeholder="Phone Number"
             name="phoneNumber"
             value={phoneNumber}
