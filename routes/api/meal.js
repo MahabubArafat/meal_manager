@@ -11,9 +11,9 @@ const Meal = require("../../models/Meal");
 // @description Get all meals taken by this user
 // @access      Private
 //TODO All past meal intakes will show up here
-router.get("/", studentMiddleware, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    res.send("meal route. all past meal intakes will show up here");
+    res.json({ meal: "accepted" });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server");
