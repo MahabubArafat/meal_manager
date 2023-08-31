@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const connectDB = require("./config/db");
 
 connectDB();
+
+// To remove this error: Access to XMLHttpRequest at 'http://localhost:5000/api/meal' from origin 'http://localhost:3000'
+// has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+app.use(cors());
 
 //* Initializing middleware
 app.use(express.json({ extended: false }));
