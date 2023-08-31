@@ -5,6 +5,7 @@ import QRScannerComponent from "./components/auth/QRscannerComponent";
 import Navbar from "./components/layout/Navbar";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import TakeMeal from "./components/auth/TakeMeal";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/scan" element={<QRScannerComponent />} />
+          <Route path="/newMeal" element={<TakeMeal />} />
         </Routes>
       </div>
     </>

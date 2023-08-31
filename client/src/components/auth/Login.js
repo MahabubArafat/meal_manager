@@ -26,7 +26,7 @@ const Login = () => {
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <input
-            type="text"
+            type="number"
             placeholder="Student ID"
             name="studentID"
             value={studentID}
