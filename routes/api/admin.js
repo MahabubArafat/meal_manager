@@ -37,6 +37,18 @@ router.get("/all_profile", adminMiddleWare, async (req, res) => {
 // @route       POST api/admin/
 // @description Login as admin
 // @access      Private
+//TODO in future add NID card
+router.post(
+  "/",
+  [
+    check("name", "Full Legal Name").not().isEmpty(),
+    check("email", "Provide Your Email").isEmail(),
+    check("phoneNumber", "Phone Number is required").not().isEmpty(),
+    check("address", "Provide Legal Address").not().isEmpty(),
+    check("password", "Please Provide a strong Password").isLength({ min: 6 }),
+  ],
+  async (req, res) => {}
+);
 
 // @route       POST api/admin/register
 // @description Register as admin
